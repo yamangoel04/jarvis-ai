@@ -7,8 +7,8 @@ import google.generativeai as genai
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init() 
-genai.configure(api_key="")
-newsapi=""
+genai.configure(api_key="put your api key")
+newsapi="put your api key"
 
 def speak(text):
     engine.say(text)  

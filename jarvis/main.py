@@ -3,9 +3,11 @@ import webbrowser
 import pyttsx3
 import musiclibrary
 import requests
+import google.generativeai as genai
 
 recognizer = sr.Recognizer()
-engine = pyttsx3.init()
+engine = pyttsx3.init() 
+genai.configure(api_key="AIzaSyCldVgMl1rIaRMOGVJ0spHL11h_m2qGqao")
 newsapi="0edadadad49f4a0ca79789ca69cec3fb"
 
 def speak(text):
@@ -13,7 +15,10 @@ def speak(text):
     engine.runAndWait()  
 
 
-
+def aiprocess(command):
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(command)
+    speak(response.text)
 
 
     
@@ -41,8 +46,10 @@ def processcommand(c):
           # Print out the headlines
           for article in articles:
            speak(article['title'])
+    
     else:
-       pass
+         aiprocess(c)
+
 
 
 
